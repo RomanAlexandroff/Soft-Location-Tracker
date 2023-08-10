@@ -22,60 +22,60 @@ void  ft_send_location(void)
     ssid = WiFi.SSID();
     DEBUG_PRINTF("WiFi connected to %s\n", ssid.c_str());
 //    DEBUG_PRINTF("Signal strength is %i dBm\n\n", WiFi.RSSI());
-    if ((ssid == "brok.jmnet.cz") && (rtcMng.last_wifi != 1)) 
+    if ((ssid == SSID1) && (rtcMng.last_wifi != 1)) 
     {
         rtcMng.last_wifi = 1;
-        bot.sendMessage(CHAT_ID, "Дома в Прага, Uhříněvěs", "");
+        bot.sendMessage(CHAT_ID, MESSAGE1, "");
     }
-    if ((ssid == "brmlab.cz") && (rtcMng.last_wifi != 2)) 
-    {
-        rtcMng.last_wifi = 2;
-        bot.sendMessage(CHAT_ID, "В BrmLab Hackerspace Prague в Прага, Žižkov", "");
-    }
-    if ((ssid == "Roman_iPhone_8") && (rtcMng.last_wifi != 3)) 
-    {
-        rtcMng.last_wifi = 3;
-        bot.sendMessage(CHAT_ID, "Админ раздал для меня Wi-Fi со своего мобильника. Должно быть он где-то путешествует", "");
-    }
-    if ((ssid == "Stas118_2.4") && (rtcMng.last_wifi != 4)) 
-    {
-        rtcMng.last_wifi = 4;
-        bot.sendMessage(CHAT_ID, "В гостях у друзей в Прага, Žižkov", "");
-    }
-    if ((ssid == "stas") && (rtcMng.last_wifi != 5)) 
-    {
-        rtcMng.last_wifi = 5;
-        bot.sendMessage(CHAT_ID, "В гостях у друзей в Прага, Žižkov", "");
-    }
-    if ((ssid == "O2-Internet-304") && (rtcMng.last_wifi != 6)) 
-    {
-        rtcMng.last_wifi = 6;
-        bot.sendMessage(CHAT_ID, "В гостях у родителей девушки в Градец Кралове", "");
-    }
-    if ((ssid == "Parlor") && (rtcMng.last_wifi != 7)) 
-    {
-        rtcMng.last_wifi = 7;
-        bot.sendMessage(CHAT_ID, "В кафэ Parlor в Прага, Karlín", "");
-    }
-    if ((ssid == "camppraha") && (rtcMng.last_wifi != 8)) 
-    {
-        rtcMng.last_wifi = 8;
-        bot.sendMessage(CHAT_ID, "В архитектурном центре C.A.M.P. в Праге", "");
-    }
-    if ((ssid == "pavaon.cz") && (rtcMng.last_wifi != 9)) 
-    {
-        rtcMng.last_wifi = 9;
-        bot.sendMessage(CHAT_ID, "В пиццерии Pavaon в Прага, Nové Město", "");
-    }
-    if ((ssid == "BERNARD") && (rtcMng.last_wifi != 10)) 
-    {
-        rtcMng.last_wifi = 10;
-        bot.sendMessage(CHAT_ID, "В баре Bernard Pub в Прага, Žižkov", "");
-    }
-    if ((ssid == "42p_guest") && (rtcMng.last_wifi != 11)) 
+    if ((ssid == SSID2) && (rtcMng.last_wifi != 11)) 
     {
         rtcMng.last_wifi = 11;
-        bot.sendMessage(CHAT_ID, "В IT школе 42 Prague в Прага, Vysočany", "");
+        bot.sendMessage(CHAT_ID, MESSAGE2, "");
+    }
+    if ((ssid == SSID3) && (rtcMng.last_wifi != 2)) 
+    {
+        rtcMng.last_wifi = 2;
+        bot.sendMessage(CHAT_ID, MESSAGE3, "");
+    }
+    if ((ssid == SSID4) && (rtcMng.last_wifi != 3)) 
+    {
+        rtcMng.last_wifi = 3;
+        bot.sendMessage(CHAT_ID, MESSAGE4, "");
+    }
+    if ((ssid == SSID5) && (rtcMng.last_wifi != 4)) 
+    {
+        rtcMng.last_wifi = 4;
+        bot.sendMessage(CHAT_ID, MESSAGE5, "");
+    }
+    if ((ssid == SSID6) && (rtcMng.last_wifi != 5)) 
+    {
+        rtcMng.last_wifi = 5;
+        bot.sendMessage(CHAT_ID, MESSAGE6, "");
+    }
+    if ((ssid == SSID7) && (rtcMng.last_wifi != 6)) 
+    {
+        rtcMng.last_wifi = 6;
+        bot.sendMessage(CHAT_ID, MESSAGE7, "");
+    }
+    if ((ssid == SSID8) && (rtcMng.last_wifi != 7)) 
+    {
+        rtcMng.last_wifi = 7;
+        bot.sendMessage(CHAT_ID, MESSAGE8, "");
+    }
+    if ((ssid == SSID9) && (rtcMng.last_wifi != 8)) 
+    {
+        rtcMng.last_wifi = 8;
+        bot.sendMessage(CHAT_ID, MESSAGE9, "");
+    }
+    if ((ssid == SSID10) && (rtcMng.last_wifi != 9)) 
+    {
+        rtcMng.last_wifi = 9;
+        bot.sendMessage(CHAT_ID, MESSAGE10, "");
+    }
+    if ((ssid == SSID11) && (rtcMng.last_wifi != 10)) 
+    {
+        rtcMng.last_wifi = 10;
+        bot.sendMessage(CHAT_ID, MESSAGE11, "");
     }
     ssid.clear();
     ESP.wdtFeed();

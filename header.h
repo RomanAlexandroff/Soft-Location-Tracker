@@ -31,6 +31,7 @@
 #include <AsyncElegantOTA.h>
 #include <UniversalTelegramBot.h>
 #include <ArduinoJson.h>                                              // Telegram
+#include "credentials.h"
 extern "C" {
   #include "user_interface.h"                                         // RTC memory read/write functions
 }
@@ -49,9 +50,6 @@ ADC_MODE(ADC_VCC);
 #define WAIT_FOR_OTA_LIMIT 30000                                      // in milliseconds (30000 == 30 seconds)
 #define WAIT_FOR_MESSAGES_LIMIT 80                                    // in seconds, 1 == 2 seconds (80 == 160 seconds == 2,5 minutes)
 #define SLEEP_DURATION 3600000000                                     // in microseconds (60000000 == 1 minute; 3600000000 == 1 hour)
-#define BOTtoken "6190828349:AAE7EGTvHINrN6Msql22NUK2QK4VNvRATV8"     // WhereIsAdmin_bot Bot Token — DO NOT CHANGE!
-//#define CHAT_ID "-1001789922877"                                    // Embedded Development Club chat ID - FOR RELEASE ONLY
-#define CHAT_ID "-1001928425767"                                      // Test Group For Telegram Gadgets chat ID - FOR DEVELOPMENT ONLY
 
 typedef struct {
 unsigned short    last_wifi;
@@ -65,7 +63,6 @@ UniversalTelegramBot bot(BOTtoken, client);
 AsyncWebServer server(80);
 
 const uint32_t    g_connect_timeout = 5000;                // WiFi connect timeout per each AP. In milliseconds. Increase if cannot connect.
-unsigned long     g_millis1 = 0;
 unsigned int      g_for_this_long = SLEEP_DURATION;        // How long the ESP will sleep for
 
 #include "other.h"

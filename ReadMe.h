@@ -13,7 +13,7 @@
 /*                                                                                                */
 /* ********************************************************************************************** */
 /*
-/*    PROJECT NOTES:
+/*      PROJECT NOTES:
 /*
 /*    This firmware allows User to track an approximate location of ESP8285 based devices via
 /*    Telegram chat notifications. Using this firmware the device connects to already known
@@ -27,12 +27,15 @@
 /*    anyone tracked by such a device, at the same time it reliably notifies User of the tracked
 /*    items or persons' movements.
 /*    What applications can it have:
-/*        - parents can be sure their younger children successfully reached school and         
-/*          then came back home after the lessons without invading their privacy,
+/*        - parents can be sure their children successfully reached school and then         
+/*          came back home after the lessons without invading the children's privacy,
 /*        - companies can track location of their property without compromising the
 /*          privacy of the employees who are being in possesion of the property,
 /*        - senders can be notified of their valuable parcels having reached the intended
-/*          destination without need of a confirmation from the receivers, etc.
+/*          destination without need of a confirmation from the receivers,
+/*        - extravert people who want all their friends to know that they are visiting
+/*          some venue,
+/*        - etc.
 /*    
 /*    This sketch was firstly written as a toy for my Embedded Development group chat in
 /*    Telegram. It would allow the group chat members to track where I was without discovering
@@ -65,6 +68,26 @@
 /*    IMPORTANT! Firmware file shall not to exeed 50% of the microprocessor memory. Otherwise 
 /*    the OTA update functionality may no longer be able to perform the update. For ESP8285
 /*    max firmware file size equals to 522232 bytes.
+/*
+/*
+/* 
+/*      EXAMPLE OF THE credentials.h FILE
+/*
+/*    #define BOTtoken    "xxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"     // Telegram Bot Token
+/*    #define CHAT_ID     "-xxxxxxxxxxxxx"                                     // Telegram chat ID
+/*
+/*    #define SSID1       "home_wifi_name"
+/*    #define PASSWORD1   "home_wifi_password"
+/*    #define MESSAGE1    "At home in London"
+/*  
+/*    #define SSID2       "university_wifi_name"
+/*    #define PASSWORD2   "university_wifi_password"
+/*    #define MESSAGE2    "At the university in Oxford"
+/*  
+/*    #define SSID3       "restaurant_wifi_name"
+/*    #define PASSWORD3   "restaurant_wifi_password"
+/*    #define MESSAGE3    "At the "Restaurant_name" restaurant"
+/*   
 /*
 /*
 /************************************************************************************************ */

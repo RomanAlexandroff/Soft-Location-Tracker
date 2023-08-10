@@ -28,7 +28,7 @@ short  ft_answer_engine(String chat_id, String text)
         return (cycles);
     }
     #endif 
-    if (text == "/state")
+    if (text == "/status")
     {
         ESP.wdtFeed();
         cycles = 0;

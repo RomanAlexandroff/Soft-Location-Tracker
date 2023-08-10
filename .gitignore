@@ -3,6 +3,9 @@
 /bin
 *.bin
 
+# Personal data
+credentials.*
+
 # Prerequisites
 *.d
 
