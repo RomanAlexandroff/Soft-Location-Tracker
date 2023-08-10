@@ -9,11 +9,9 @@
 /*   Updated: 2023/06/29 18:48:41                                ###    ###   ###     ###         */
 /*                                                                                                */
 /*                                                                                                */
-/*   This sketch was written as a toy for my Embedded Development group chat in Telegram          */
-/*   This sketch allows the group chat members to track where I am.                               */
-/*   Complete project details: https://RandomNerdTutorials.com/telegram-group-esp32-esp8266/      */
-/*   Project created using Brian Lough's Universal Telegram Bot Library:                          */
-/*   https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot                               */
+/*   List of known Wi-Fi networks in accordance with the ESP8266WiFiMulti library. More           */
+/*   networks credentials can be added in an identical fasion ("SSID", "password"). The           */
+/*   list must be called before the wifiMulti.run() function, which initiates connection.         */
 /*                                                                                                */
 /* ********************************************************************************************** */
 

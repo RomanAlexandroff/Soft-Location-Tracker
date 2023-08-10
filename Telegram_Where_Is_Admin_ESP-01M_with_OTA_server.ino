@@ -11,7 +11,7 @@
 /*                                                                                                */
 /*   This is the Main file of the Soft Tracker Project. This firmware allows User to track        */
 /*   an approximate location of ESP8285 based devices via Telegram chat notifications.            */
-/*   Complete project details: https://RandomNerdTutorials.com/telegram-group-esp32-esp8266/      */
+/*   Telegram library details: https://RandomNerdTutorials.com/telegram-group-esp32-esp8266/      */
 /*   Important! Firmware file not to exeed 50% of memory. Otherwise OTA unavailable.              */
 /*                                                                                                */
 /* ********************************************************************************************** */
@@ -53,7 +53,7 @@ void  setup(void)
             ft_check_incomming_messages(WAIT_FOR_MESSAGES_LIMIT);             // WAIT_FOR_MESSAGES_LIMIT means check new messages only 1 time
     }
     else
-        rtcMng.lastWiFi = 0;
+        rtcMng.last_wifi = 0;
     ft_go_to_sleep();
 }
 

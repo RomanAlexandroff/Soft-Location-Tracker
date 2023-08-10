@@ -9,11 +9,8 @@
 /*   Updated: 2023/06/29 18:48:41                                ###    ###   ###     ###         */
 /*                                                                                                */
 /*                                                                                                */
-/*   This sketch was written as a toy for my Embedded Development group chat in Telegram          */
-/*   This sketch allows the group chat members to track where I am.                               */
-/*   Complete project details: https://RandomNerdTutorials.com/telegram-group-esp32-esp8266/      */
-/*   Project created using Brian Lough's Universal Telegram Bot Library:                          */
-/*   https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot                               */
+/*   This file contains all the little utility functions that are not too important to have       */
+/*   their own personal files. They are not necesarrily connected with each other logically.      */
 /*                                                                                                */
 /* ********************************************************************************************** */
 

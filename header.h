@@ -9,11 +9,12 @@
 /*   Updated: 2023/06/29 18:48:41                                ###    ###   ###     ###         */
 /*                                                                                                */
 /*                                                                                                */
-/*   This sketch was written as a toy for my Embedded Development group chat in Telegram          */
-/*   This sketch allows the group chat members to track where I am.                               */
-/*   Complete project details: https://RandomNerdTutorials.com/telegram-group-esp32-esp8266/      */
+/*   This firmware allows User to track an approximate location of ESP8285 based devices via      */
+/*   Telegram chat notifications.                                                                 */
+/*   Telegram library details: https://RandomNerdTutorials.com/telegram-group-esp32-esp8266/      */
 /*   Project created using Brian Lough's Universal Telegram Bot Library:                          */
 /*   https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot                               */
+/*   Important! Firmware file not to exeed 50% of memory. Otherwise OTA unavailable.              */
 /*                                                                                                */
 /* ********************************************************************************************** */
 
@@ -33,7 +34,7 @@
 extern "C" {
   #include "user_interface.h"                                         // RTC memory read/write functions
 }
-ADC_MODE(ADC_VCC);                                                    // battery charge measuring
+ADC_MODE(ADC_VCC);
 
 #define PRIVATE                                                       // comment out this line to allow bot answer in any Telegram chat
 #define DEBUG                                                         // comment out this line to turn off Serial output
@@ -52,10 +53,10 @@ ADC_MODE(ADC_VCC);                                                    // battery
 //#define CHAT_ID "-1001789922877"                                    // Embedded Development Club chat ID - FOR RELEASE ONLY
 #define CHAT_ID "-1001928425767"                                      // Test Group For Telegram Gadgets chat ID - FOR DEVELOPMENT ONLY
 
-typedef struct {                                          // RTC memory struct
-unsigned short    lastWiFi;                               // remembers what Wi-Fi it was connected to previously
-} rtcManagementStruc;
-rtcManagementStruc rtcMng; 
+typedef struct {
+unsigned short    last_wifi;
+} rtcMemoryStruct;
+rtcMemoryStruct rtcMng; 
 
 X509List cert(TELEGRAM_CERTIFICATE_ROOT);
 ESP8266WiFiMulti wifiMulti;
@@ -65,7 +66,7 @@ AsyncWebServer server(80);
 
 const uint32_t    g_connect_timeout = 5000;                // WiFi connect timeout per each AP. In milliseconds. Increase if cannot connect.
 unsigned long     g_millis1 = 0;
-unsigned int      g_for_this_long = SLEEP_DURATION;        // How long the ESP is gonna sleep for?
+unsigned int      g_for_this_long = SLEEP_DURATION;        // How long the ESP will sleep for
 
 #include "other.h"
 #include "ota_mode.h"
@@ -75,7 +76,7 @@ unsigned int      g_for_this_long = SLEEP_DURATION;        // How long the ESP i
 
 void   ft_wifi_list(void);
 void   ft_send_location(void);
-void   ft_check_incomming_messages(short cycles);           // This function allows to controll the device from the Telegram chat, but drains the battery quicker
+void   ft_check_incomming_messages(short cycles);
 short  ft_new_messages(int numNewMessages);
 short  ft_answer_engine(String chat_id, String text);
 void   ft_ota_mode(String chat_id);

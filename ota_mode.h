@@ -9,7 +9,7 @@
 /*   Updated: 2023/06/29 18:48:41                                ###    ###   ###     ###         */
 /*                                                                                                */
 /*                                                                                                */
-/*   This file allowes to update the microntroller wirelessly, fimply by sending a compiled       */
+/*   This file allowes to update the microntroller wirelessly, simply by sending a compiled       */
 /*   binary file into its file system. The microcontroller opens a gate, accessable through       */
 /*   any web-browser via a link, that is provided by the microcontroller through both Serial      */
 /*   port and Telegram chat.                                                                      */
@@ -19,7 +19,7 @@
 /*                                                                                                */
 /*   NOTE! The compiled firmware file should not exeed 50% of the microprocessor memory!          */
 /*   Otherwise the OTA update functionality may no longer be able to perform the update.          */
-/*   For ESP8285 max firmware file size equals to 522232 bytes.                                   */
+/*   For ESP8285 (ESP-01M) max firmware file size equals to 522232 bytes.                         */
 /*                                                                                                */
 /* ********************************************************************************************** */
 
