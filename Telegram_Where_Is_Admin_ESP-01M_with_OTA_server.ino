@@ -21,22 +21,28 @@
 void  setup(void)
 {
     short battery_state;
-    
+    bool  play_recorded;
+
+    play_recorded = false;
     ESP.wdtEnable(WD_TIMEOUT);                                                // watchdog
     #ifdef DEBUG
         Serial.begin(115200);
     #endif
     DEBUG_PRINTF("\n\n\nDEVICE START\n\n", "");
-    system_rtc_mem_read(64, &rtcMng, 2);                                      // Revive variables from RTC memory after deep sleep
-    configTime(0, 0, "pool.ntp.org");                                         // get UTC time via NTP
+    system_rtc_mem_read(64, &rtcMng, sizeof(rtcMng));                         // Revive variables from RTC memory after deep sleep
+    if (rtcMng.last_wifi == 0)
+        play_recorded = true;
+    configTime(0, 0, "pool.ntp.org");
     client.setTrustAnchors(&cert);                                            // Add root certificate for api.telegram.org
-    WiFi.persistent(true);                                                   // Save WiFi configuration in flash - optional
+    WiFi.persistent(true);                                                    // Save WiFi configuration in flash - optional
     WiFi.mode(WIFI_STA);
-    WiFi.hostname("SoftTraker");                                              // Assigning board's name visible on Wi-Fi
+    WiFi.hostname("SoftTraker");
     ft_wifi_list();
-    if (wifiMulti.run(g_connect_timeout) == WL_CONNECTED) 
+    if (wifiMulti.run(CONNECT_TIMEOUT) == WL_CONNECTED) 
     {
         ft_send_location();
+        if (play_recorded && rtcMng.scan_results[0][0])
+            ft_scan_report();
         battery_state = ft_battery_check();
         DEBUG_PRINTF("Current battery state is %d%%\n", battery_state);
         if (battery_state <= 15)
@@ -46,14 +52,16 @@ void  setup(void)
         else if (battery_state >= 99)                                         // unlimited messaging unlocks only when charging
         {
             bot.sendMessage(CHAT_ID, "Аккумулятор полностью заряжен!", "");
-            ft_check_incomming_messages(0);                                   // 0 means check new messages WAIT_FOR_MESSAGES_LIMIT times
-            
+            ft_check_incomming_messages(0);                                   // 0 == check new messages for WAIT_FOR_MESSAGES_LIMIT times
         }
         else
-            ft_check_incomming_messages(WAIT_FOR_MESSAGES_LIMIT);             // WAIT_FOR_MESSAGES_LIMIT means check new messages only 1 time
+            ft_check_incomming_messages(WAIT_FOR_MESSAGES_LIMIT);             // WAIT_FOR_MESSAGES_LIMIT == check new messages only 1 time
     }
     else
+    {
+        ft_wifi_scan();
         rtcMng.last_wifi = 0;
+    }
     ft_go_to_sleep();
 }
 

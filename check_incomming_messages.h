@@ -11,6 +11,8 @@
 /*                                                                                                */
 /*   These functions are for checking on new Telegram messages, reading them and reacting to      */
 /*   them accordingly.                                                                            */
+/*   WARNING! DO NOT CALL THE ft_go_to_sleep() FUNCTION FROM ANY OF THESE FUNCTIONS! THE DEVICE   */
+/*   WOULD BECOME UNRESPONSIVE TO ANY MESSAGES FROM THE TELEGRAM CHAT!                            */
 /*                                                                                                */
 /* ********************************************************************************************** */
 

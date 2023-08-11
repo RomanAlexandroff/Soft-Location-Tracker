@@ -62,7 +62,7 @@
 /*    thus was discarted and RTC memory was used to store the data instead.
 /*     
 /*    WARNING! Do not call ft_go_to_sleep() function from ft_check_incomming_messages(), 
-/*    ft_new_messages() and ft_OTAmode() functions! It causes the Telegram bot messages queue
+/*    ft_new_messages() and ft_ota_mode() functions! It causes the Telegram bot messages queue
 /*    to get stuck on the same last message!
 /*     
 /*    IMPORTANT! Firmware file shall not to exeed 50% of the microprocessor memory. Otherwise 

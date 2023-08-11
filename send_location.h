@@ -77,7 +77,6 @@ void  ft_send_location(void)
         rtcMng.last_wifi = 10;
         bot.sendMessage(CHAT_ID, MESSAGE11, "");
     }
-    ssid.clear();
     ESP.wdtFeed();
 }
  

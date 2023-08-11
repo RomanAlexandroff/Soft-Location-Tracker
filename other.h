@@ -17,11 +17,11 @@
 void  ft_go_to_sleep(void)
 {
     ESP.wdtFeed();
-    system_rtc_mem_write(64, &rtcMng, 2);
+    system_rtc_mem_write(64, &rtcMng, sizeof(rtcMng));
     DEBUG_PRINTF("\nGoing to sleep for %d minute(s)\n", (g_for_this_long / 60000000));
     DEBUG_PRINTF("The device was running for %d second(s) this time\n", (millis() / 1000));
     DEBUG_PRINTF("\nDEVICE STOP\n\n\n", "");
-    ESP.deepSleep(g_for_this_long, WAKE_RFCAL);
+    ESP.deepSleep(g_for_this_long, WAKE_NO_RFCAL);
 }
 
 short  ft_battery_check(void)

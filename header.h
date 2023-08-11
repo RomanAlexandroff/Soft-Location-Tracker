@@ -46,13 +46,16 @@ ADC_MODE(ADC_VCC);
   #define DEBUG_PRINTF(x, y)
   #define DEBUG_PRINTS(q, w, e, r, t)
 #endif
-#define WD_TIMEOUT 5000                                               // watchdog, in milliseconds (5000 == 5 seconds; 8500 — system max val)
-#define WAIT_FOR_OTA_LIMIT 30000                                      // in milliseconds (30000 == 30 seconds)
+#define WD_TIMEOUT              5000                                  // watchdog, in milliseconds (5000 == 5 seconds; 8500 — system max val)
+#define CONNECT_TIMEOUT         5000                                  // WiFi timeout per each AP, in milliseconds. Increase if cannot connect.
+#define WAIT_FOR_OTA_LIMIT      30000                                 // in milliseconds (30000 == 30 seconds)
 #define WAIT_FOR_MESSAGES_LIMIT 80                                    // in seconds, 1 == 2 seconds (80 == 160 seconds == 2,5 minutes)
-#define SLEEP_DURATION 3600000000                                     // in microseconds (60000000 == 1 minute; 3600000000 == 1 hour)
+#define SLEEP_DURATION          3600000000                            // in microseconds (60000000 == 1 minute; 3600000000 == 1 hour)
+#define MAX_NETWORKS            10                                    // maximum number of Wi-Fi networks names to store in RTC memory
 
 typedef struct {
-unsigned short    last_wifi;
+unsigned short  last_wifi;
+char            scan_results[MAX_NETWORKS][16];
 } rtcMemoryStruct;
 rtcMemoryStruct rtcMng; 
 
@@ -61,16 +64,20 @@ ESP8266WiFiMulti wifiMulti;
 WiFiClientSecure client;
 UniversalTelegramBot bot(BOTtoken, client);
 AsyncWebServer server(80);
-
-const uint32_t    g_connect_timeout = 5000;                // WiFi connect timeout per each AP. In milliseconds. Increase if cannot connect.
-unsigned int      g_for_this_long = SLEEP_DURATION;        // How long the ESP will sleep for
+             
+unsigned int    g_for_this_long = SLEEP_DURATION;                     // setting Deep Sleep default length
 
 #include "other.h"
 #include "ota_mode.h"
+#include "wifi_recorder.h"
 #include "send_location.h"
 #include "check_incomming_messages.h"
 #include "wifi_list.h"
 
+void   ft_clear_scan_results(void);
+String ft_write_report_message(void);
+void   ft_scan_report(void);
+void   ft_wifi_scan(void);
 void   ft_wifi_list(void);
 void   ft_send_location(void);
 void   ft_check_incomming_messages(short cycles);
