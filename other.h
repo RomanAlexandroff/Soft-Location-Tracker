@@ -28,7 +28,7 @@ short  ft_battery_check(void)
 {
     short  battery;
       
-    battery = ceil((ESP.getVcc() - 3040) / 12.22);
+    battery = ceil((ESP.getVcc() - 3040) / 12.22);             // see ReadMe regarding the constants
     if (battery <= 0)
         battery = 0;
     if (battery >= 100)

@@ -52,10 +52,11 @@ ADC_MODE(ADC_VCC);
 #define WAIT_FOR_MESSAGES_LIMIT 80                                    // in seconds, 1 == 2 seconds (80 == 160 seconds == 2,5 minutes)
 #define SLEEP_DURATION          3600000000                            // in microseconds (60000000 == 1 minute; 3600000000 == 1 hour)
 #define MAX_NETWORKS            10                                    // maximum number of Wi-Fi networks names to store in RTC memory
+#define MAX_NAME_LENGTH         16                                    // maximum number of caracters in Wi-Fi networks names to store in RTC memory
 
 typedef struct {
 unsigned short  last_wifi;
-char            scan_results[MAX_NETWORKS][16];
+char            scan_results[MAX_NETWORKS][MAX_NAME_LENGTH];
 } rtcMemoryStruct;
 rtcMemoryStruct rtcMng; 
 

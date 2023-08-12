@@ -15,16 +15,6 @@
 /*   Wi-Fi network, not only it states its location, but also prints out the list of networks     */
 /*   the device "saw" between the last two successfull connections.                               */
 /*                                                                                                */
-/*   Wi-Fi networks are often named after the venues that own them. This is why recording         */
-/*   networks names can help User to backtrack the path the device made between successfull       */
-/*   connections.                                                                                 */
-/*                                                                                                */
-/*   In the scenario when the device leaves a location with a known Wi-Fi network, travels for    */
-/*   days to places without known Wi-Fi networks and then later returns to the initial location   */
-/*   with the Wi-Fi network it was previously connected to, the device will not be able to        */
-/*   report such movements with a standart send_location function. This is when the list of       */
-/*   recorded networks names come helpful - it will reflect such movements.                       */
-/*                                                                                                */
 /* ********************************************************************************************** */
 
 void  ft_clear_scan_results(void)
@@ -103,7 +93,7 @@ void  IRAM_ATTR ft_wifi_scan(void)
         while (j < quantity && i < (MAX_NETWORKS - 1))
         {
             ssid = WiFi.SSID(j);
-            ssid.toCharArray(rtcMng.scan_results[i], 20);
+            ssid.toCharArray(rtcMng.scan_results[i], MAX_NAME_LENGTH);
             i++;
             j++;
         }
