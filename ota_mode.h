@@ -40,12 +40,12 @@ void  ft_ota_mode(String chat_id)
     server.begin();
     DEBUG_PRINTF("HTTP server started.\nConnect to the stated Wi-Fi network and proceed to the link\n\n", "");
     DEBUG_PRINTS("http://%d.%d.%d.%d/update\n\n\n", ip[0], ip[1], ip[2], ip[3]);
-    message = "Режим перепрошивки OTA включён\n\nПодключено к\n" + String(ssid);
-    message += "\nПрисвоенный IP\n" + String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]);
-    message += "\n\nПодключитесь к указанной Wi-Fi сети и перейдите по ссылке\nhttp://";
+    message = "OTA mode activated. \n\nConnected to\n" + String(ssid);
+    message += "\nAssigned IP\n" + String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]);
+    message += "\n\nConnect to the stated Wi-Fi network and go to the link\nhttp://";
     message += String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]) + "/update";
-    message += "\n\nПомните, что ожидание в режиме перепрошивки OTA не ограничено по времени.";
-    message += " Чтобы отключить устройство без перепрошивки, воспользуйтесь командой off!";
+    message += "\n\nRemember that in OTA mode I will not automatically go to sleep.";
+    message += " To cancel the OTA mode without firmware update use \"off\" or \"reboot\" commands!";
     bot.sendMessage(chat_id, message, "");
     message.clear();
     ESP.wdtFeed();

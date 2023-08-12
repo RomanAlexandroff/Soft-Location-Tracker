@@ -34,9 +34,9 @@ short  ft_answer_engine(String chat_id, String text)
     {
         ESP.wdtFeed();
         cycles = 0;
-        message = "Устройство подключено к " + String(WiFi.SSID());   
+        message = "I am connected to " + String(WiFi.SSID());   
         message += ", RSSI " + String(WiFi.RSSI());
-        message += " dBm, заряд аккумулятора " + String(ft_battery_check()) + "%";
+        message += " dBm, my battery is " + String(ft_battery_check()) + "% charged";
         bot.sendMessage(chat_id, message, "Markdown");
         message.clear();
         return (cycles);
@@ -51,33 +51,34 @@ short  ft_answer_engine(String chat_id, String text)
     else if (text == "/ota")
     {
         cycles = 0;
-        bot.sendMessage(chat_id, "Режим перепрошивки OTA нужен для замены программного обеспечения устройства и доступен только разработчикам. Чтобы продолжить, введите свой пароль разработчика", "");
+        bot.sendMessage(chat_id, "The OTA mode is for wireless firmware update and accessable only by the developers. If you wish to continue, enter your Developer Password", "");
         return (cycles);
     }
     else if (text == "/2461" || text == "/ota 2461")
     {
         cycles = -32767;                                                              // keep the device working as long as possible while OTA
-        bot.sendMessage(chat_id, "Пароль принят", "");
+        bot.sendMessage(chat_id, "Password accepted", "");
         ft_ota_mode(chat_id);
         return (cycles);
     }
     else if (text == "/reboot")
     {
-        bot.sendMessage(chat_id, "Перезагружаюсь!", "");
+        bot.sendMessage(chat_id, "Rebooting!", "");
         g_for_this_long = 10;
         cycles = WAIT_FOR_MESSAGES_LIMIT;
         return (cycles);
     }
     else if (text == "/off")
     {
-        bot.sendMessage(chat_id, "Выключаюсь!", "");
+        bot.sendMessage(chat_id, "Switching off!", "");
         cycles = WAIT_FOR_MESSAGES_LIMIT;
         return (cycles);
     }
     else
     {
         cycles = 0;
-        bot.sendMessage(chat_id, "Простите, я не понимаю.", "");
+        bot.sendMessage(chat_id, "I'm sorry, I don't understand", "");
+        bot.sendMessage(chat_id, "Try one of the following commands: status, location, ota, reboot, off. Every command should start with \"/\" sign", "");
         return (cycles);
     }
     return (cycles);
@@ -124,7 +125,7 @@ void  ft_check_incomming_messages(short cycles)
         }
         DEBUG_PRINTF("Waiting loop cycles: %d\n", cycles);
         if ((cycles + 25) == WAIT_FOR_MESSAGES_LIMIT)
-            bot.sendMessage(CHAT_ID, "Переход в режим сна через 1 минуту. Чтобы отменить, напишите мне любое сообщение", "");
+            bot.sendMessage(CHAT_ID, "It seems that I'm not currently needed. I'll wait for 1 more minute just in case and then go to sleep. To keep me awake, write me anything.", "");
         cycles++;
     }
 }
