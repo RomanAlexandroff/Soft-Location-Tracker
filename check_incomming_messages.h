@@ -35,8 +35,8 @@ short  ft_answer_engine(String chat_id, String text)
         ESP.wdtFeed();
         cycles = 0;
         message = "I am connected to " + String(WiFi.SSID());   
-        message += ", RSSI " + String(WiFi.RSSI());
-        message += " dBm, my battery is " + String(ft_battery_check()) + "% charged";
+        message += ". Signal strength is " + String(WiFi.RSSI());
+        message += " dBm. My battery is " + String(ft_battery_check()) + "% charged";
         bot.sendMessage(chat_id, message, "Markdown");
         message.clear();
         return (cycles);

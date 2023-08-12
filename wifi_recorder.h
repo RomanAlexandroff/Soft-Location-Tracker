@@ -80,7 +80,7 @@ void  ft_scan_report(void)
     ft_clear_scan_results();
 }
 
-void  ft_wifi_scan(void)
+void  IRAM_ATTR ft_wifi_scan(void)
 {
     int     i;
     int     j;

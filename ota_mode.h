@@ -44,8 +44,8 @@ void  ft_ota_mode(String chat_id)
     message += "\nAssigned IP\n" + String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]);
     message += "\n\nConnect to the stated Wi-Fi network and go to the link\nhttp://";
     message += String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]) + "/update";
-    message += "\n\nRemember that in OTA mode I will not automatically go to sleep.";
-    message += " To cancel the OTA mode without firmware update use \"off\" or \"reboot\" commands!";
+    message += "\n\nRemember that in OTA mode I will not go to sleep automatically.";
+    message += " To cancel the OTA mode without firmware update use \"off\" or \"reboot\" commands";
     bot.sendMessage(chat_id, message, "");
     message.clear();
     ESP.wdtFeed();

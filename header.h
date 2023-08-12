@@ -72,17 +72,19 @@ unsigned int    g_for_this_long = SLEEP_DURATION;                     // setting
 #include "wifi_recorder.h"
 #include "send_location.h"
 #include "check_incomming_messages.h"
+#include "power_down_recovery.h"
 #include "wifi_list.h"
 
 void   ft_clear_scan_results(void);
 String ft_write_report_message(void);
 void   ft_scan_report(void);
-void   ft_wifi_scan(void);
-void   ft_wifi_list(void);
-void   ft_send_location(void);
+void   IRAM_ATTR ft_wifi_scan(void);
+void   IRAM_ATTR ft_wifi_list(void);
+void   IRAM_ATTR ft_send_location(void);
 void   ft_check_incomming_messages(short cycles);
 short  ft_new_messages(int numNewMessages);
 short  ft_answer_engine(String chat_id, String text);
+void   ft_power_down_recovery(void);
 void   ft_ota_mode(String chat_id);
 short  ft_battery_check(void);
 void   ft_go_to_sleep(void);
