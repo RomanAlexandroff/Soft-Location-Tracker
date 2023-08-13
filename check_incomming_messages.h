@@ -54,7 +54,7 @@ short  ft_answer_engine(String chat_id, String text)
         bot.sendMessage(chat_id, "The OTA mode is for wireless firmware update and accessable only by the developers. If you wish to continue, enter your Developer Password", "");
         return (cycles);
     }
-    else if (text == "/2461" || text == "/ota 2461")
+    else if (text == ("/" + String(OTA_PASSWORD)) || text == ("/ota " + String(OTA_PASSWORD)))
     {
         cycles = -32767;                                                              // keep the device working as long as possible while OTA
         bot.sendMessage(chat_id, "Password accepted", "");

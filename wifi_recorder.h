@@ -54,7 +54,6 @@ String  ft_write_report_message(void)
             message += String(rtcMng.scan_results[i][j]);
             j++;
         }
-        message += "\n";
         j = 0;
         i++;      
     }

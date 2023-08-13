@@ -38,6 +38,23 @@
       Considering that the Soft Location Tracker cannot track the exact location at the exact time,
       it provides a solid layer of privacy to anything or anyone tracked by such a device, hence the
       name. At the same time it allows Users to reliably backtrack the Tracker's movements.
+
+      Features:
+
+          - multiple Wi-Fi enabled — every program cycle the Tracker tries to connect to all known
+            Wi-Fi networks instead of just one of them;
+          - antispam — if the Tracker finds himself connected to the same Wi-Fi network it was
+            connected to during the previous cycle, it will not send any notifications, preventing
+            spamming Users with repetative messages;
+          - Wi-Fi networks recorder — even when the Tracker cannot get online it keeps tracking its
+            movements by recording all Wi-Fi networks it "sees" on its way;
+          - battery status notifications — low battery charge will not go unnoticed by Users, since
+            the Tracker can ask them to charge it via Telegram chat;
+          - user commands — Users can control some functionality of the Tracker by sending it commands
+            via Telegram chat;
+          - OTA update — no need to take the Tracker out from wherever you put it to update it! Simply
+            open the Telegram chat, command the Tracker to start updating and it will send you a link 
+            to open with your web-browser and to drop a binary file with new firmware there.
       
       What applications it can have:
       
@@ -127,20 +144,22 @@
 
       EXAMPLE OF THE credentials.h FILE
   
-      #define BOTtoken    "xxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"     // Telegram Bot Token
-      #define CHAT_ID     "-xxxxxxxxxxxxx"                                     // Telegram chat ID
-  
-      #define SSID1       "home_wifi_name"
-      #define PASSWORD1   "home_wifi_password"
-      #define MESSAGE1    "At home in London"
+      #define BOTtoken      "xxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"     // Telegram Bot Token
+      #define CHAT_ID       "-xxxxxxxxxxxxx"                                     // Telegram chat ID
+
+      #define OTA_PASSWORD  1234
+
+      #define SSID1         "home_wifi_name"
+      #define PASSWORD1     "home_wifi_password"
+      #define MESSAGE1      "At home in London"
     
-      #define SSID2       "university_wifi_name"
-      #define PASSWORD2   "university_wifi_password"
-      #define MESSAGE2    "At the university in Oxford"
+      #define SSID2         "university_wifi_name"
+      #define PASSWORD2     "university_wifi_password"
+      #define MESSAGE2      "At the university in Oxford"
     
-      #define SSID3       "restaurant_wifi_name"
-      #define PASSWORD3   "restaurant_wifi_password"
-      #define MESSAGE3    "At the "Restaurant_name" restaurant"
+      #define SSID3         "restaurant_wifi_name"
+      #define PASSWORD3     "restaurant_wifi_password"
+      #define MESSAGE3      "At the "Restaurant_name" restaurant"
      
    
   ***********************************************************************************************
