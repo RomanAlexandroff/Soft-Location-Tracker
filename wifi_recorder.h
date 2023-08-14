@@ -87,7 +87,7 @@ void  IRAM_ATTR ft_wifi_scan(void)
     else if (quantity > 0)
     {
         DEBUG_PRINTF("%d networks found\n", quantity);
-        while (rtcMng.scan_results[i][0] != '\0' && i < (MAX_NETWORKS - 2))
+        while (rtcMng.scan_results[i][0] != '\0' && i < (MAX_NETWORKS - 6))       // this expression allows overwriting the last 5 entries in the list
             i++;              
         while (j < quantity && i < (MAX_NETWORKS - 1))
         {

@@ -51,8 +51,8 @@ ADC_MODE(ADC_VCC);
 #define WAIT_FOR_OTA_LIMIT      30000                                 // in milliseconds (30000 == 30 seconds)
 #define WAIT_FOR_MESSAGES_LIMIT 80                                    // in seconds, 1 == 2 seconds (80 == 160 seconds == 2,5 minutes)
 #define SLEEP_DURATION          3600000000                            // in microseconds (60000000 == 1 minute; 3600000000 == 1 hour)
-#define MAX_NETWORKS            18                                    // maximum number of Wi-Fi networks names to store in RTC memory
-#define MAX_NAME_LENGTH         22                                    // maximum number of caracters in Wi-Fi networks names to store in RTC memory
+#define MAX_NETWORKS            16                                    // maximum number of Wi-Fi networks names to store in RTC memory
+#define MAX_NAME_LENGTH         18                                    // maximum number of caracters in Wi-Fi networks names to store in RTC memory
 
 typedef struct {
 unsigned short  last_wifi;
@@ -84,7 +84,7 @@ void   IRAM_ATTR ft_wifi_list(void);
 void   IRAM_ATTR ft_send_location(void);
 void   ft_check_incomming_messages(short cycles);
 short  ft_new_messages(int numNewMessages);
-short  ft_answer_engine(String chat_id, String text);
+short  IRAM_ATTR ft_answer_engine(String chat_id, String text);
 void   ft_power_down_recovery(void);
 void   ft_ota_mode(String chat_id);
 short  ft_battery_check(void);

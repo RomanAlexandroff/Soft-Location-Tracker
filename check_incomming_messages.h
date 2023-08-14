@@ -16,7 +16,7 @@
 /*                                                                                                */
 /* ********************************************************************************************** */
 
-short  ft_answer_engine(String chat_id, String text)
+short  IRAM_ATTR ft_answer_engine(String chat_id, String text)
 {
     short   cycles;
     String  message;
@@ -39,6 +39,16 @@ short  ft_answer_engine(String chat_id, String text)
         message += " dBm. My battery is " + String(ft_battery_check()) + "% charged";
         bot.sendMessage(chat_id, message, "Markdown");
         message.clear();
+        return (cycles);
+    }
+    if (text == "/recorder report")
+    {
+        ESP.wdtFeed();
+        cycles = 0;
+        if (rtcMng.scan_results[0][0])
+            ft_scan_report();
+        else
+            bot.sendMessage(CHAT_ID, "My list of unknown Wi-Fi networks is currently empty", "");
         return (cycles);
     }
     else if (text == "/location")
@@ -78,7 +88,7 @@ short  ft_answer_engine(String chat_id, String text)
     {
         cycles = 0;
         bot.sendMessage(chat_id, "I'm sorry, I don't understand", "");
-        bot.sendMessage(chat_id, "Try one of the following commands: status, location, ota, reboot, off. Every command should start with \"/\" sign", "");
+        bot.sendMessage(chat_id, "Try one of the following commands: status, location, recorder report, ota, reboot, off. Every command should start with \"/\" sign", "");
         return (cycles);
     }
     return (cycles);
