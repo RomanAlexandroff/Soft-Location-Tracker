@@ -43,7 +43,7 @@ void  setup(void)
         if (rtcMng.last_wifi == 0)
             play_recorded = true;
         ft_send_location();
-        if (play_recorded && rtcMng.scan_results[0][0])
+        if (play_recorded && rtcMng.scan_results[0][0] != '\0')
             ft_scan_report();
         battery_state = ft_battery_check();
         DEBUG_PRINTF("Current battery state is %d%%\n", battery_state);

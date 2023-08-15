@@ -45,7 +45,7 @@ short  IRAM_ATTR ft_answer_engine(String chat_id, String text)
     {
         ESP.wdtFeed();
         cycles = 0;
-        if (rtcMng.scan_results[0][0])
+        if (rtcMng.scan_results[0][0] != '\0')
             ft_scan_report();
         else
             bot.sendMessage(CHAT_ID, "My list of unknown Wi-Fi networks is currently empty", "");
