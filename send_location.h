@@ -77,6 +77,11 @@ void  IRAM_ATTR ft_send_location(void)
         rtcMng.last_wifi = 11;
         bot.sendMessage(CHAT_ID, MESSAGE11, "");
     }
+    if ((ssid == SSID12) && (rtcMng.last_wifi != 12)) 
+    {
+        rtcMng.last_wifi = 12;
+        bot.sendMessage(CHAT_ID, MESSAGE12, "");
+    }
     ESP.wdtFeed();
 }
  
