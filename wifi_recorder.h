@@ -44,8 +44,10 @@ String  ft_write_report_message(void)
 
     i = 0;
     j = 0;
-    message = "Since the last successful connection I've detected some Wi-Fi networks ";   
-    message += "I was unable to connect to. Here's the list:\n";
+    message = "Between this and the previous report I was taken to unknown locations. ";   
+    message += "Until now I could not connect to a network to let you know ";
+    message += "but I made you a list of Wi-Fis I saw on the way. ";
+    message += "By googling their names you may discover the route I traveled:\n";
     while (rtcMng.scan_results[i][0] != '\0')
     {
         message += "\n" + String(i + 1) + ". ";
