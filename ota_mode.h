@@ -28,10 +28,12 @@ void  ft_ota_mode(String chat_id)
     String      ssid;
     IPAddress   ip;
     String      message;
+    short       battery_state;
 
     ESP.wdtFeed();
     ssid = WiFi.SSID();
     ip = WiFi.localIP();
+    battery_state = ft_battery_check();
     DEBUG_PRINTF("\n\nSOFT TRACKER\nOTA update mode initialized.\n\n", "");
     DEBUG_PRINTF("Wi-Fi network: %s\n", ssid.c_str());
     DEBUG_PRINTS("IP address: %d.%d.%d.%d\n\n", ip[0], ip[1], ip[2], ip[3]);
@@ -46,6 +48,10 @@ void  ft_ota_mode(String chat_id)
     message += String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]) + "/update";
     message += "\n\nRemember that in OTA mode I will not go to sleep automatically.";
     message += " To cancel the OTA mode without firmware update use \"off\" or \"reboot\" commands";
+    if (battery_state < 20 && battery_state > 10)
+        message += "\n\nBattery charge is " + battery_state + "%. It is recomended to charge the device before updating";
+    if (battery_state <= 10)
+        message += "\n\nWarning! Battery charge is " + battery_state + "%! Attempt to update the device may lead to a fatal damage! Charge the device first.";
     bot.sendMessage(chat_id, message, "");
     message.clear();
     ESP.wdtFeed();
