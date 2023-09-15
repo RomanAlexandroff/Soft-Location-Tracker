@@ -6,7 +6,7 @@
 /*   By: Roman Alexandrov <r.aleksandroff@gmail.com>                +#++:++#:    +#++:++#++:      */
 /*                                                                 +#+    +#+   +#+     +#+       */
 /*   Created: 2023/06/28 14:49:16                                 #+#    #+#   #+#     #+#        */
-/*   Updated: 2023/06/29 18:48:41                                ###    ###   ###     ###         */
+/*   Updated: 2023/09/15 08:14:26                                ###    ###   ###     ###         */
 /*                                                                                                */
 /*                                                                                                */
 /*   This file contains only notes.                                                               */
@@ -89,8 +89,14 @@
 
       This sketch was firstly written as a toy for my Embedded Development group chat in
       Telegram. It would allow the group chat members to track where I was without discovering
-      my precise location. The project is based on Brian Lough's Universal Telegram Bot Library:
+      my precise location.
+      
+      The project is based on Brian Lough's Universal Telegram Bot Library:
       https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot
+
+      The OTA functionality added using AsyncElegantOTA as well as ESPAsyncWebServer libraries:
+      https://github.com/ayushsharma82/AsyncElegantOTA
+      https://github.com/me-no-dev/ESPAsyncWebServer
 
 
   ***********************************************************************************************

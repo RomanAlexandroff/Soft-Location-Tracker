@@ -13,10 +13,6 @@
 /*   binary file into its file system. The microcontroller opens a gate, accessable through       */
 /*   any web-browser via a link, that is provided by the microcontroller through both Serial      */
 /*   port and Telegram chat.                                                                      */
-/*   The functionality added using AsyncElegantOTA as well as ESPAsyncWebServer libraries:        */
-/*   https://github.com/ayushsharma82/AsyncElegantOTA                                             */
-/*   https://github.com/me-no-dev/ESPAsyncWebServer                                               */
-/*                                                                                                */
 /*   NOTE! The compiled firmware file should not exeed 50% of the microprocessor memory!          */
 /*   Otherwise the OTA update functionality may no longer be able to perform the update.          */
 /*   For ESP8285 (ESP-01M) max firmware file size equals to 522232 bytes.                         */
