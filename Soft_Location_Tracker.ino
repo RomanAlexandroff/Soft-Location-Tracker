@@ -6,7 +6,7 @@
 /*   By: Roman Alexandrov <r.aleksandroff@gmail.com>                +#++:++#:    +#++:++#++:      */
 /*                                                                 +#+    +#+   +#+     +#+       */
 /*   Created: 2023/06/28 14:49:16                                 #+#    #+#   #+#     #+#        */
-/*   Updated: 2023/06/29 18:48:41                                ###    ###   ###     ###         */
+/*   Updated: 2023/09/16 12:48:41                                ###    ###   ###     ###         */
 /*                                                                                                */
 /*                                                                                                */
 /*   This is the Main file of the Soft Tracker Project. This firmware allows User to track        */
@@ -38,7 +38,7 @@ void  setup(void)
     ft_wifi_list();
     if (wifiMulti.run(CONNECT_TIMEOUT) == WL_CONNECTED) 
     {
-        if (rtcMng.last_wifi < 0 || rtcMng.last_wifi > 12)
+        if (rtcMng.last_wifi < 0 || rtcMng.last_wifi > 13)
             ft_power_down_recovery();
         if (rtcMng.last_wifi == 0)
             play_recorded = true;
