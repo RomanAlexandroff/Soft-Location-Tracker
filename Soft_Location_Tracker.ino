@@ -38,9 +38,9 @@ void  setup(void)
     ft_wifi_list();
     if (wifiMulti.run(CONNECT_TIMEOUT) == WL_CONNECTED) 
     {
-        if (rtcMng.last_wifi < 0 || rtcMng.last_wifi > 13)
+        if (rtcMng.g_last_wifi < 0 || rtcMng.g_last_wifi > 13)
             ft_power_down_recovery();
-        if (rtcMng.last_wifi == 0)
+        if (rtcMng.g_last_wifi == 0)
             play_recorded = true;
         ft_send_location();
         if (play_recorded && rtcMng.scan_results[0][0] != '\0')
@@ -62,7 +62,7 @@ void  setup(void)
     else
     {
         ft_wifi_scan();
-        rtcMng.last_wifi = 0;
+        rtcMng.g_last_wifi = 0;
     }
     ft_go_to_sleep();
 }

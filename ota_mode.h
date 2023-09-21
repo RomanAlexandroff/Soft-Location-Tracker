@@ -19,17 +19,35 @@
 /*                                                                                                */
 /* ********************************************************************************************** */
 
-void  ft_ota_mode(String chat_id) 
+short  ft_ota_mode(String chat_id) 
 {
     String      ssid;
     IPAddress   ip;
     String      message;
-    short       battery_state;
+    short       battery;
+    int         i;
 
     ESP.wdtFeed();
     ssid = WiFi.SSID();
     ip = WiFi.localIP();
-    battery_state = ft_battery_check();
+    battery = ft_battery_check();
+    if (battery <= 15)
+    {
+        DEBUG_PRINTF("\nThe battery is too low to perform an OTA update safely. Connect a charging cable to proceed.\n", "");
+        message = "The battery is too low to perform an OTA update safely. ";
+        message += "Connect a charging cable to proceed. I will wait as long as I can.";
+        bot.sendMessage(chat_id, message, "");
+        while (battery > 5 && battery <= 15 && i)
+        {
+            battery = ft_battery_check();
+            ESP.wdtFeed();
+            delay (999);
+            i--;
+        }
+        if (battery <= 15)
+            return (WAIT_FOR_MESSAGES_LIMIT);
+        message.clear();
+    }
     DEBUG_PRINTF("\n\nSOFT TRACKER\nOTA update mode initialized.\n\n", "");
     DEBUG_PRINTF("Wi-Fi network: %s\n", ssid.c_str());
     DEBUG_PRINTS("IP address: %d.%d.%d.%d\n\n", ip[0], ip[1], ip[2], ip[3]);
@@ -44,12 +62,8 @@ void  ft_ota_mode(String chat_id)
     message += String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]) + "/update";
     message += "\n\nRemember that in OTA mode I will not go to sleep automatically.";
     message += " To cancel the OTA mode without firmware update use \"off\" or \"reboot\" commands";
-    if (battery_state < 20 && battery_state > 10)
-        message += "\n\nBattery charge is " + battery_state + "%. It is recomended to charge the device before updating";
-    if (battery_state <= 10)
-        message += "\n\nWarning! Battery charge is " + battery_state + "%! Attempt to update the device may lead to a fatal damage! Charge the device first.";
     bot.sendMessage(chat_id, message, "");
-    message.clear();
     ESP.wdtFeed();
+    return (-32767);
 }
  

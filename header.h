@@ -48,14 +48,14 @@ ADC_MODE(ADC_VCC);
 #endif
 #define WD_TIMEOUT              5000                                  // watchdog, in milliseconds (5000 == 5 seconds; 8500 — system max val)
 #define CONNECT_TIMEOUT         5000                                  // WiFi timeout per each AP, in milliseconds. Increase if cannot connect.
-#define WAIT_FOR_OTA_LIMIT      30000                                 // in milliseconds (30000 == 30 seconds)
+#define WAIT_FOR_OTA_LIMIT      60                                    // in seconds
 #define WAIT_FOR_MESSAGES_LIMIT 80                                    // in seconds, 1 == 2 seconds (80 == 160 seconds == 2,5 minutes)
 #define SLEEP_DURATION          3600000000                            // in microseconds (60000000 == 1 minute; 3600000000 == 1 hour)
 #define MAX_NETWORKS            16                                    // maximum number of Wi-Fi networks names to store in RTC memory
 #define MAX_NAME_LENGTH         18                                    // maximum number of caracters in Wi-Fi networks names to store in RTC memory
 
 typedef struct {
-unsigned short  last_wifi;
+unsigned short  g_last_wifi;
 char            scan_results[MAX_NETWORKS][MAX_NAME_LENGTH];
 } rtcMemoryStruct;
 rtcMemoryStruct rtcMng; 
@@ -86,7 +86,7 @@ void   ft_check_incomming_messages(short cycles);
 short  ft_new_messages(int numNewMessages);
 short  IRAM_ATTR ft_answer_engine(String chat_id, String text);
 void   ft_power_down_recovery(void);
-void   ft_ota_mode(String chat_id);
+short  ft_ota_mode(String chat_id);
 short  ft_battery_check(void);
 void   ft_go_to_sleep(void);
 

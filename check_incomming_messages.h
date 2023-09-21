@@ -54,7 +54,7 @@ short  IRAM_ATTR ft_answer_engine(String chat_id, String text)
     else if (text == "/location")
     {
         cycles = 0;
-        rtcMng.last_wifi = 0;
+        rtcMng.g_last_wifi = 0;
         ft_send_location();
         return (cycles);
     }
@@ -66,9 +66,8 @@ short  IRAM_ATTR ft_answer_engine(String chat_id, String text)
     }
     else if (text == ("/" + String(OTA_PASSWORD)) || text == ("/ota " + String(OTA_PASSWORD)))
     {
-        cycles = -32767;                                                              // keep the device working as long as possible while OTA
         bot.sendMessage(chat_id, "Password accepted", "");
-        ft_ota_mode(chat_id);
+        cycles = ft_ota_mode(chat_id);
         return (cycles);
     }
     else if (text == "/reboot")
